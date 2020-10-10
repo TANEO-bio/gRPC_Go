@@ -1,0 +1,10 @@
+syntax = "proto3";
+service MyService {
+  rpc GetRandomNumber (Request) returns (Response) {}
+}
+message Request {
+  int64 seed = 1;
+}
+message Response {
+  float random = 1;
+}
