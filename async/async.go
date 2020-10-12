@@ -15,7 +15,7 @@ func GetInt(a int, c chan int) {
 }
 
 func main() {
-	// バッファーなし (= 単一スレッド)
+	// バッファーなし (= 逐次実行)
 	c := make(chan int)
 
 	go GetInt(0, c)
@@ -25,8 +25,8 @@ func main() {
 		fmt.Println("Main: ", d)
 	}
 
-	// バッファーあり (= 並行処理)
-	c = make(chan int, 4)
+	// バッファーあり (= まとめて出力を得る)
+	c = make(chan int, 3)
 
 	go GetInt(0, c)
 
